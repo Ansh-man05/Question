@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentines Day</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .gradient-background {
+      background: rgb(255, 208, 229);
+      background: linear-gradient(180deg, rgba(255, 208, 229, 1) 0%, rgba(255, 232, 242, 1) 36%, rgba(255, 255, 255, 1) 100%);
+    }
+
+    .bounce2 {
+      animation: bounce2 2s ease infinite;
+    }
+
+    @keyframes bounce2 {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body class="gradient-background">
+  <div class="flex items-center justify-center h-screen">
+    <div class="flex flex-col items-center p-4">
+      <img id="imageDisplay" src="./images/image1.gif" alt="Cute kitten with flowers" class="rounded-md h-[300px]" style="object-fit: cover;" />
+      <h2 id="valentineQuestion" class="text-4xl font-bold italic text-[#bd1e59] my-4">Will you be my Valentine🌹?</h2>
+      <div class="flex gap-4 pt-[20px] items-center" id="responseButtons">
+        <button id="yesButton"
+          class="bounce2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium disabled:pointer-events-none disabled:opacity-50 hover:bg-green-400 min-h-12 min-w-[75px] px-4 py-2 bg-green-500 text-white transition">
+          oo
+        </button>
+        <button id="noButton"
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium transition disabled:pointer-events-none disabled:opacity-50 hover:bg-red-700 h-12 min-w-[75px] w-auto px-4 py-2 bg-red-500 text-white">
+          Dili
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+    const yesButton = document.getElementById('yesButton');
+    const noButton = document.getElementById('noButton');
+    const imageDisplay = document.getElementById('imageDisplay');
+    const valentineQuestion = document.getElementById('valentineQuestion');
+    const responseButtons = document.getElementById('responseButtons');
+  
+    let noClickCount = 0;
+    let buttonHeight = 48; // Starting height in pixels
+    let buttonWidth = 80;
+    let fontSize = 20; // Starting font size in pixels
+    const imagePaths = [
+      "./images/image1.gif",
+      "./images/image2.gif",
+      "./images/image3.gif",
+      "./images/image4.gif",
+      "./images/image5.gif",
+      "./images/image6.gif",
+      "./images/broken-heart-heart.gif",
+      "./images/broken-hearted-sad.gif",
+      "./images/broken-heart.gif",
+      "./images/cash-app-empty.gif",
+      "./images/emotional-fiat.gif",
+      "./images/goma-peach.gif",
+      "./images/heart-break.gif",
+      "./images/heart-broken-please-stop.gif",
+      "./images/heart-broke.gif",
+      "./images/heart-broken.gif",
+      "./images/heart-crushing-heart.gif",
+      "./images/hug-me-im-sad.gif",
+      "./images/me-sad-me-very-sad.gif",
+      "./images/reaction-sad.gif",
+      "./images/sad-broken-heart.gif",
+      "./images/sad-broken-heart.gif",
+      "./images/sad-guy-going-to-corner.gif",
+      "./images/spongebob-sponge.gif",
+      "./images/image7.gif"
+    ];
+  
+    noButton.addEventListener('click', function() {
+      if (noClickCount < 42) {
+        noClickCount++;
+        imageDisplay.src = imagePaths[noClickCount%23];
+        buttonHeight += 7; // Increase height by 5px on each click
+        buttonWidth += 7;
+        fontSize += 5; // Increase font size by 1px on each click
+        yesButton.style.height = `${buttonHeight}px`; // Update button height
+        yesButton.style.width = `${buttonWidth}px`;
+        yesButton.style.fontSize = `${fontSize}px`; // Update font size
+        if (noClickCount < 42) {
+          noButton.textContent = [ "Aduna ba'y nakapanghimamat kanimo?",
+    "Kaya ba nato kini'g hiusa?",
+    "Motuo ako kanato, ikaw pod?",
+    "Naalala nimo ang maayong panahon nga atong naagi?",
+    "Ayaw lang karon'g pagbaton kanako.",
+    "Sa ingon ani na lang ko kayo, kon hatagan mo'g higayon.",
+    "Ikaw ang tanan kanako, palihug lang ug balik-panglantaw.",
+    "Dili ko maimahay sa akong kinabuhi kung wala ka.",
+    "Atong hibaw-an unsay nakaingon kanimo.",
+    "Palihug ayaw lang pagdiklara kanako.",
+    "Higugmaon tika labaw sa tanan.",
+    "Magtinabangay kita aron mahimo kining maayo.",
+    "Pasayloa ko kon nakasakit ko nimo, atong panagsaon.",
+    "Ikaw ang tanan nako, pwede ba natong uli-on?",
+    "Dili ko kakita sa akong kinabuhi nga wala ka.",
+    "Ikaw ra ang akong gibati-an nga buhi.",
+    "Magpaabot ko kanimo, bisan unsaon pa kini.",
+    "Ikaw aduna'y kabahin.",
+    "Ayaw lang padali'g desisyon.",
+    "Magtuman ko'g bisan unsa aron sa imong kalipay.",
+    "Palihug ayaw lang padayon nga panaway.",
+    "Dili lang intawon kawala ang atong gugma.",
+    "Hatagan tika'g espasyo kung kinahanglan, pero ayaw lang pagbiya kanako.",
+    "Kaya nato kini puhon-puhon, nasayod ko nga kaya nato.",
+    "Ania ako pirme kon andam ka na mobarog.",
+    "Maghimo ko'g paagi alang sa matag higayon nga atong gipasagdan.",
+    "Nagtoo ko kanato, imong gisugilanon pud?",
+    "Magtinabangay kita aron mabalik ang imong pagtoo kanako.",
+    "Dili ko moolag sa imong gugma, bisan pa pangayo-on pa nimo.",
+    "Magtungha ko kanimo, bisan unsaon pa.",
+    "Magpaabot ako kanimo, bisan unsaon pa kini.",
+    "Dili ko mohunong sa pag-ampo alang kanato.",
+    "Magtinabangay kita aron malipayon kita puhon.",
+    "Palihug ayaw lang pagbiya kanako, bisan unsaon pa kini.",
+    "Magtinabangay kita aron tinood kita.",
+    "Magpaabot ako kanimo sa tanang panahon.",
+    "Ok karon kini nagdaut na sa akong gibati!",
+    "Karon, ikaw na lang nagbugalbugal!",
+    "Ngano ni'ni imo'ng gibuhat kanako?",
+    "Palihug hatagi ko'g higayon!",
+    "Nagapangayo ako kanimo pag-undang!",
+    "Ok, simulan na lang nato liwat.."][noClickCount];
+        }
+      }
+    });
+  
+    yesButton.addEventListener('click', () => {
+  // Redirect to the desired website
+  window.location.href = 'https://justtolerateme.github.io/Question/';
+});
+
+
+
+  </script>  
+</body>
+</html>
